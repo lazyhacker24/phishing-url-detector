@@ -1,65 +1,77 @@
 body {
-    margin: 0;
-    background: linear-gradient(135deg, #4e54c8, #8f94fb);
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #0b0f19;
+  color: white;
+  text-align: center;
+  padding: 0;
 }
 
-.hero {
-    min-height: 85vh;
+header {
+  margin-top: 30px;
 }
 
-.glass-card {
-    width: 90%;
-    max-width: 500px;
-    background: rgba(255, 255, 255, 0.20);
-    backdrop-filter: blur(18px);
-    border-radius: 20px;
-    color: #fff;
+h1 {
+  font-size: 32px;
+  color: #38bdf8;
+  font-weight: 700;
 }
 
-.analyze-btn {
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
-    border: none;
-    font-size: 18px;
-    border-radius: 10px;
-}
-.analyze-btn:hover {
-    opacity: 0.9;
+.subtitle {
+  opacity: 0.7;
+  margin-bottom: 30px;
 }
 
-.result-box {
-    padding: 12px;
-    font-size: 18px;
-    border-radius: 12px;
+form {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 90%;
+  max-width: 750px;
 }
 
-.result-box.safe {
-    background: #0fd850;
-    color: white;
+input {
+  padding: 12px;
+  width: 70%;
+  border-radius: 8px;
+  border: 1px solid #38bdf8;
+  background: #111827;
+  color: white;
 }
 
-.result-box.danger {
-    background: #ff0000;
-    color: white;
+button {
+  padding: 12px 20px;
+  background: #38bdf8;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-.badge.risk-level {
-    font-size: 18px;
-    padding: 10px 16px;
-    border-radius: 10px;
-    background: #fff;
-    color: #222;
+.result-card {
+  margin: 30px auto;
+  width: 90%;
+  max-width: 650px;
+  padding: 25px;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.footer {
-    color: #fff;
+.safe { border-left: 6px solid #22c55e; }
+.medium { border-left: 6px solid #eab308; }
+.high { border-left: 6px solid #f97316; }
+.danger { border-left: 6px solid #ef4444; }
+
+footer {
+  margin-top: 40px;
+  padding: 10px;
+  opacity: 0.7;
 }
 
-.social {
-    font-size: 28px;
-    margin: 0 10px;
-    color: white;
-}
-.social:hover {
-    color: yellow;
+.social a {
+  margin: 0 10px;
+  color: #38bdf8;
+  text-decoration: none;
 }
