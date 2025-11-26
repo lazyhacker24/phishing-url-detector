@@ -6,31 +6,43 @@
     <title>Phishing URL Detector</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
+    <script>
+        function showLoader() {
+            document.getElementById("loader").style.display = "flex";
+        }
+    </script>
 </head>
 
 <body>
+
 <header>
     <div class="topnav">
         <h1>🔐 Phishing URL Detector</h1>
 
-        <!-- Clickable professional cyber profile icon -->
-        <a href="https://users.pardeep.co" target="_blank" class="profile-icon-link">
+        <!-- Professional SVG Cyber Profile Icon -->
+        <a href="https://users.pardeep.co" target="_blank">
             <svg class="profile-logo" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="7" r="5"></circle>
-                <path d="M2 21c2.5-4 6.5-6 10-6s7.5 2 10 6"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+                <path d="M5.5 21c1.5-4 5-6 6.5-6s5 2 6.5 6"></path>
             </svg>
         </a>
     </div>
 
-    <p class="subtitle">Identify malicious & suspicious websites</p>
+    <p class="subtitle">Detect unsafe and phishing URLs using Machine Learning</p>
 </header>
 
 <main>
-    <form method="POST" action="/">
-        <input type="text" name="url" placeholder="Enter website URL (example: login-facebook-secure.net)" required>
+    <form method="POST" action="/" onsubmit="showLoader()">
+        <input type="text" name="url" placeholder="example: secure-paypal-confirm-update.com" required>
         <button type="submit">Scan URL</button>
     </form>
+
+    <!-- SCANNING ANIMATION LOADER -->
+    <div id="loader" class="loader">
+        <div class="scanner"></div>
+        <p>Scanning URL...</p>
+    </div>
 
     {% if error %}
     <div class="result-card danger">
@@ -55,5 +67,6 @@
         <a href="https://linkedin.com/in/pardeep23" target="_blank">LinkedIn</a>
     </div>
 </footer>
+
 </body>
 </html>
