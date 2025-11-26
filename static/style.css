@@ -1,34 +1,45 @@
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: #0b0f19;
+  background: #0a0f1c;
   color: white;
   text-align: center;
-  padding: 0;
 }
 
-header {
-  margin-top: 30px;
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 25px auto 0;
+}
+
+.profile-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid #38bdf8;
+  cursor: pointer;
 }
 
 h1 {
-  font-size: 32px;
   color: #38bdf8;
+  font-size: 30px;
   font-weight: 700;
 }
 
 .subtitle {
   opacity: 0.7;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 form {
-  margin: 20px auto;
   display: flex;
   justify-content: center;
   gap: 10px;
   width: 90%;
   max-width: 750px;
+  margin: 0 auto;
 }
 
 input {
@@ -42,36 +53,53 @@ input {
 
 button {
   padding: 12px 20px;
-  background: #38bdf8;
+  background: #0ea5e9;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  border-radius: 10px;
   font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.6);
+}
+
+button:hover {
+  background: #38bdf8;
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.9);
+  transform: translateY(-2px);
 }
 
 .result-card {
-  margin: 30px auto;
+  margin: 25px auto;
   width: 90%;
   max-width: 650px;
   padding: 25px;
   border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.08);
+  border-left: 6px solid #38bdf8;
 }
 
-.safe { border-left: 6px solid #22c55e; }
-.medium { border-left: 6px solid #eab308; }
-.high { border-left: 6px solid #f97316; }
-.danger { border-left: 6px solid #ef4444; }
+.danger { border-left-color: #ef4444; }
 
 footer {
   margin-top: 40px;
-  padding: 10px;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 .social a {
   margin: 0 10px;
   color: #38bdf8;
   text-decoration: none;
+}
+.profile-logo {
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  transition: 0.3s;
+  filter: drop-shadow(0 0 8px #38bdf8);
+}
+
+.profile-logo:hover {
+  filter: drop-shadow(0 0 14px #38bdf8);
+  transform: scale(1.08);
 }
