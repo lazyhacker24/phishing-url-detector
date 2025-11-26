@@ -4,51 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phishing URL Detector</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
-    <header>
-        <h1>🔐 Phishing URL Detection System</h1>
-        <p class="subtitle">Identify risky websites using Machine Learning</p>
-    </header>
+<header>
+    <div class="topnav">
+        <h1>🔐 Phishing URL Detector</h1>
 
-    <main>
-        <form method="POST" action="/">
-            <input type="text" name="url" value="{{ url }}" placeholder="Enter website URL (ex: facebook-login-security.com)" required>
-            <button type="submit">Scan URL</button>
-        </form>
+        <!-- Clickable professional cyber profile icon -->
+        <a href="https://users.pardeep.co" target="_blank" class="profile-icon-link">
+            <svg class="profile-logo" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="7" r="5"></circle>
+                <path d="M2 21c2.5-4 6.5-6 10-6s7.5 2 10 6"></path>
+            </svg>
+        </a>
+    </div>
 
-        {% if result %}
-        <div class="result-card {{ 'danger' if risk_score >= 75 else 'high' if risk_score >=50 else 'medium' if risk_score >=25 else 'safe' }}">
-            <h2>{{ result }}</h2>
+    <p class="subtitle">Identify malicious & suspicious websites</p>
+</header>
 
-            {% if risk_score is not none %}
-            <p><strong>Risk Score:</strong> {{ risk_score }}%</p>
+<main>
+    <form method="POST" action="/">
+        <input type="text" name="url" placeholder="Enter website URL (example: login-facebook-secure.net)" required>
+        <button type="submit">Scan URL</button>
+    </form>
 
-            <p><strong>Risk Level:</strong>
-                {% if risk_score >= 90 %} 🚨 Extremely Dangerous
-                {% elif risk_score >= 75 %} 🔴 High Risk
-                {% elif risk_score >= 50 %} 🟠 Medium Risk
-                {% elif risk_score >= 25 %} 🟡 Low Risk
-                {% else %} 🟢 Safe
-                {% endif %}
-            </p>
-            {% endif %}
+    {% if error %}
+    <div class="result-card danger">
+        <h2>{{ error }}</h2>
+    </div>
+    {% endif %}
 
-            <p><strong>Website Scanned:</strong> {{ url }}</p>
-        </div>
-        {% endif %}
-    </main>
+    {% if result %}
+    <div class="result-card">
+        <h2>{{ result }}</h2>
+        <p><strong>Risk Score:</strong> {{ risk_score }}%</p>
+        <p><strong>Risk Level:</strong> {{ level }}</p>
+        <p><strong>Website Scanned:</strong> {{ url }}</p>
+    </div>
+    {% endif %}
+</main>
 
-    <footer>
-        <p>© 2025 Pardeep | All Rights Reserved</p>
-        <div class="social">
-            <a target="_blank" href="https://github.com/lazyhacker24">GitHub</a>
-            <a target="_blank" href="https://linkedin.com/in/pardeep23">LinkedIn</a>
-        </div>
-    </footer>
+<footer>
+    <p>© 2025 Pardeep — All Rights Reserved</p>
+    <div class="social">
+        <a href="https://github.com/lazyhacker24" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/pardeep23" target="_blank">LinkedIn</a>
+    </div>
+</footer>
 </body>
 </html>
