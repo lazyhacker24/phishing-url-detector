@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import joblib
 import os
 import pandas as pd
@@ -8,6 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from feature_extractor import extract_features
 
 app = Flask(__name__)
+app.secret_key = "securekey123"  # needed for session storage
 
 def train_model():
     dataset = pd.read_csv("phishing_dataset.csv")
@@ -23,15 +24,12 @@ def train_model():
     print("Model trained & saved as model.pkl")
     return model
 
-# Load model if exists, otherwise train
 model = joblib.load("model.pkl") if os.path.exists("model.pkl") else train_model()
-
 
 def normalize_url(url):
     if not url.startswith(("http://", "https://")):
         url = "http://" + url
     return url
-
 
 def is_valid_url(url):
     pattern = re.compile(r"^(https?:\/\/)?([\w\-]+\.)+[\w\-]{2,}$")
@@ -43,9 +41,9 @@ def index():
     if request.method == "POST":
         url = request.form.get("url", "").strip()
 
-        # URL format validation
         if not is_valid_url(url):
-            return render_template("index.html", error="❌ Invalid URL Format! Enter something like example.com or https://google.com")
+            session["error"] = "❌ Invalid URL Format! Example: google.com"
+            return redirect(url_for("index"))
 
         normalized_url = normalize_url(url)
         features = extract_features(normalized_url)
@@ -54,7 +52,6 @@ def index():
         proba = model.predict_proba([features])[0][1]
         risk_score = round(float(proba) * 100, 2)
 
-        # RISK LEVEL CATEGORIES
         if risk_score >= 90:
             level = "🚨 Extremely Dangerous"
         elif risk_score >= 75:
@@ -68,11 +65,22 @@ def index():
 
         result = "⚠ Phishing Website (Unsafe)" if prediction == 1 else "✔ Legitimate Website (Safe)"
 
-        # Return data to frontend
-        return render_template("index.html", result=result, risk_score=risk_score, url=normalized_url, level=level)
+        # store one-time result in session
+        session["result"] = result
+        session["risk_score"] = risk_score
+        session["url"] = normalized_url
+        session["level"] = level
 
-    # GET Request (first load or refresh) = clean UI
-    return render_template("index.html")
+        return redirect(url_for("index"))
+
+    # For GET request (after redirect)
+    result = session.pop("result", None)
+    risk_score = session.pop("risk_score", None)
+    url_text = session.pop("url", None)
+    level = session.pop("level", None)
+    error = session.pop("error", None)
+
+    return render_template("index.html", result=result, risk_score=risk_score, url=url_text, level=level, error=error)
 
 
 if __name__ == "__main__":
