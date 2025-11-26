@@ -17,55 +17,50 @@ body {
 .profile-logo {
   width: 42px;
   height: 42px;
-  border-radius: 50%;
-  border: 2px solid #38bdf8;
   cursor: pointer;
+  transition: 0.3s;
+  filter: drop-shadow(0 0 8px #38bdf8);
+}
+.profile-logo:hover {
+  filter: drop-shadow(0 0 18px #38bdf8);
+  transform: scale(1.1);
 }
 
-h1 {
-  color: #38bdf8;
-  font-size: 30px;
-  font-weight: 700;
-}
+h1 { color: #38bdf8; font-size: 30px; font-weight: 700; }
 
-.subtitle {
-  opacity: 0.7;
-  margin-bottom: 25px;
-}
+.subtitle { opacity: 0.75; margin-bottom: 30px; }
 
 form {
   display: flex;
   justify-content: center;
-  gap: 10px;
   width: 90%;
   max-width: 750px;
   margin: 0 auto;
+  gap: 12px;
 }
 
 input {
-  padding: 12px;
+  padding: 14px;
   width: 70%;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid #38bdf8;
   background: #111827;
   color: white;
 }
 
 button {
-  padding: 12px 20px;
+  padding: 14px 20px;
   background: #0ea5e9;
   border: none;
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 0 12px rgba(14, 165, 233, 0.6);
+  box-shadow: 0 0 10px #0ea5e9;
 }
-
 button:hover {
+  box-shadow: 0 0 20px #38bdf8;
   background: #38bdf8;
-  box-shadow: 0 0 24px rgba(56, 189, 248, 0.9);
-  transform: translateY(-2px);
 }
 
 .result-card {
@@ -74,22 +69,39 @@ button:hover {
   max-width: 650px;
   padding: 25px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255,255,255,0.05);
   backdrop-filter: blur(12px);
   border-left: 6px solid #38bdf8;
 }
 
-.danger { border-left-color: #ef4444; }
+/* Loader Radar Animation */
+.loader {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 25px;
+}
+.scanner {
+  width: 90px;
+  height: 90px;
+  border: 3px solid #38bdf8;
+  border-radius: 50%;
+  animation: scan 1.4s infinite linear;
+}
+@keyframes scan {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1.1); }
+}
 
+/* Footer sticky */
 footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  text-align: center;
-  padding: 10px 0;
-  background: #0a0f1c;
+  padding: 12px 0;
+  background: #080c16;
   font-size: 14px;
-  opacity: 0.7;
 }
 
 .social a {
@@ -97,23 +109,4 @@ footer {
   color: #38bdf8;
   text-decoration: none;
   font-size: 18px;
-}
-
-
-.social a {
-  margin: 0 10px;
-  color: #38bdf8;
-  text-decoration: none;
-}
-.profile-logo {
-  width: 42px;
-  height: 42px;
-  cursor: pointer;
-  transition: 0.3s;
-  filter: drop-shadow(0 0 8px #38bdf8);
-}
-
-.profile-logo:hover {
-  filter: drop-shadow(0 0 14px #38bdf8);
-  transform: scale(1.08);
 }
