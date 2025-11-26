@@ -1,7 +1,65 @@
 body {
-    background-color: #f5f7fb;
+    margin: 0;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    font-family: "Poppins", sans-serif;
 }
 
-.card {
+.hero {
+    min-height: 85vh;
+}
+
+.glass-card {
+    width: 90%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
+    color: #fff;
+}
+
+.analyze-btn {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    border: none;
+    font-size: 18px;
+    border-radius: 10px;
+}
+.analyze-btn:hover {
+    opacity: 0.9;
+}
+
+.result-box {
+    padding: 12px;
+    font-size: 18px;
     border-radius: 12px;
+}
+
+.result-box.safe {
+    background: #0fd850;
+    color: white;
+}
+
+.result-box.danger {
+    background: #ff0000;
+    color: white;
+}
+
+.badge.risk-level {
+    font-size: 18px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: #fff;
+    color: #222;
+}
+
+.footer {
+    color: #fff;
+}
+
+.social {
+    font-size: 28px;
+    margin: 0 10px;
+    color: white;
+}
+.social:hover {
+    color: yellow;
 }
